@@ -1,17 +1,25 @@
 {
   "name": "css-specificity-calculator",
   "version": "0.1.0",
-  "description": "",
+  "description": "Calculates the specificity of a given CSS selector",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Punit Shah",
+  "license": "MIT",
   "dependencies": {
     "css-selector-tokenizer": "^0.7.1"
   },
   "devDependencies": {
     "jest": "^24.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punit-shah/css-specificity-calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/punit-shah/css-specificity-calculator/issues"
+  },
+  "homepage": "https://github.com/punit-shah/css-specificity-calculator#readme"
 }
