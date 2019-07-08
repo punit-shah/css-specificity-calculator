@@ -37,7 +37,7 @@ const categoriseSelectorNodes = (nodes) =>
       []
     );
 
-const specificityFromSelectorNodes = (nodes) =>
+const countNodeTypes = (nodes) =>
   categoriseSelectorNodes(nodes).reduce(
     (previous, current) => ({
       ...previous,
@@ -45,6 +45,12 @@ const specificityFromSelectorNodes = (nodes) =>
     }),
     {}
   );
+
+const specificityFromSelectorNodes = (nodes) => {
+  const counted = countNodeTypes(nodes);
+
+  return [counted.id || 0, counted.class || 0, counted.element || 0];
+};
 
 const calculateSpecificity = (selector) => {
   const parsed = parse(selector);
