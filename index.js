@@ -1,29 +1,29 @@
 const { parse } = require('css-selector-tokenizer');
 
-const specificityFromSelectorNodes = (nodes) =>
+const categoriseSelectorNodes = (nodes) =>
   nodes
     .map((node) => {
       switch (node.type) {
         case 'universal':
         case 'spacing':
         case 'operator':
-          return 0;
+          return;
         case 'element':
         case 'pseudo-element':
-          return 1;
+          return 'element';
         case 'class':
         case 'pseudo-class':
         case 'attribute':
-          return 10;
+          return 'class';
         case 'id':
-          return 100;
+          return 'id';
         case 'nested-pseudo-class':
           if (node.nodes.length > 1) {
             throw Error(
               `Too many selectors inside nested pseudo-class ${node.name}`
             );
           }
-          return specificityFromSelectorNodes(node.nodes[0].nodes);
+          return categoriseSelectorNodes(node.nodes[0].nodes);
         default:
           throw Error(
             `Unrecognised selector node type: ${node.type} - ${node.name ||
@@ -31,7 +31,20 @@ const specificityFromSelectorNodes = (nodes) =>
           );
       }
     })
-    .reduce((previous, current) => previous + current, 0);
+    .reduce(
+      // flatten
+      (previous, current) => (current ? previous.concat(current) : previous),
+      []
+    );
+
+const specificityFromSelectorNodes = (nodes) =>
+  categoriseSelectorNodes(nodes).reduce(
+    (previous, current) => ({
+      ...previous,
+      [current]: (previous[current] || 0) + 1
+    }),
+    {}
+  );
 
 const calculateSpecificity = (selector) => {
   const parsed = parse(selector);
