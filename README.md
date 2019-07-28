@@ -7,5 +7,5 @@ Calculates the specificity of a given CSS selector.
 ```js
 import calculateSpecificity from 'css-specificity-calculator';
 
-calculateSpecificity('body#home .container p'); // 112
+calculateSpecificity('ul#nav li.nav-item::before'); // [1, 1, 3]
 ```
