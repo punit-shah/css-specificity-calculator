@@ -1,6 +1,6 @@
 {
   "name": "css-specificity-calculator",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Calculates the specificity of a given CSS selector",
   "module": "src/index.js",
   "scripts": {
