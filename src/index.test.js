@@ -1,4 +1,4 @@
-const calculateSpecificity = require('./index');
+import calculateSpecificity from './index';
 
 test('universal selector', () => {
   expect(calculateSpecificity('*')).toStrictEqual([0, 0, 0]);

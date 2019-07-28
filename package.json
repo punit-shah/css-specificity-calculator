@@ -2,18 +2,25 @@
   "name": "css-specificity-calculator",
   "version": "2.0.0",
   "description": "Calculates the specificity of a given CSS selector",
-  "main": "index.js",
+  "module": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "prepare": "npm run build"
   },
-  "author": "Punit Shah",
-  "license": "MIT",
   "dependencies": {
     "css-selector-tokenizer": "^0.7.1"
   },
   "devDependencies": {
-    "jest": "^24.8.0"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
   },
+  "author": "Punit Shah",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/punit-shah/css-specificity-calculator.git"
@@ -21,5 +28,17 @@
   "bugs": {
     "url": "https://github.com/punit-shah/css-specificity-calculator/issues"
   },
-  "homepage": "https://github.com/punit-shah/css-specificity-calculator#readme"
+  "homepage": "https://github.com/punit-shah/css-specificity-calculator#readme",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  }
 }

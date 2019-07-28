@@ -1,4 +1,4 @@
-const { parse } = require('css-selector-tokenizer');
+import { parse } from 'css-selector-tokenizer';
 
 const categoriseSelectorNodes = (nodes) =>
   nodes
@@ -63,4 +63,4 @@ const calculateSpecificity = (selector) => {
   return specificityFromSelectorNodes(selectorNode.nodes);
 };
 
-module.exports = calculateSpecificity;
+export default calculateSpecificity;
